@@ -30,15 +30,15 @@
   --font-mono: 'IBM Plex Mono', monospace;
 
   /* Tamanhos de texto */
-  --text-2xs: 11px;
-  --text-xs: 12px;
-  --text-sm: 13px;
-  --text-md: 15px;
-  --text-lg: 18px;
-  --text-xl: 20px;
-  --text-2xl: 24px;
-  --text-3xl: 32px;
-  --text-4xl: 48px;
+  --text-2xs: 1.1rem;
+  --text-xs: 1.2rem;
+  --text-sm: 1.3rem;
+  --text-md: 1.6rem;
+  --text-lg: 1.8rem;
+  --text-xl: 2rem;
+  --text-2xl: 2.4rem;
+  --text-3xl: 3.2rem;
+  --text-4xl: 4.8rem;
 
   /* Espaçamento */
   --space-1: 4px;
