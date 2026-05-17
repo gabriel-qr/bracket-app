@@ -1,4 +1,14 @@
-header {
+.header {
   position: fixed;
   top: 0;
+  width: 100%;
+}
+
+.container {
+  min-height: 100vh;
+  padding-top: 5.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
 }

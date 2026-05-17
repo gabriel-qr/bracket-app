@@ -8,9 +8,9 @@ export default function Topbar() {
 
   return (
     <div className={styles.container}>
-      <a href='/'>
+      <a href='/' className={styles.left}>
         <Trophy className={styles.icon} size={26} />
-        <h1>Brackify Arena</h1>
+        <h1 className={styles.title}>Brackify Arena</h1>
       </a>
 
       <div className={styles.right}>
