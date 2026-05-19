@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  flex-flow: column;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--stroke-subtle);
+}

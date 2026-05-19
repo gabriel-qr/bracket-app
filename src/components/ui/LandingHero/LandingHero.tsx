@@ -1,7 +1,8 @@
+import styles from './LandingHero.module.css';
 import { RefreshCcw, Save, Trophy } from 'lucide-react';
 import CTAButton from '../CTAButton/CTAButton';
 import InfoTag from '../InfoTag/InfoTag';
-import styles from './LandingHero.module.css';
+import MatchCard from '../MatchCard/MatchCard';
 
 export default function LandingHero() {
   return (
@@ -16,6 +17,7 @@ export default function LandingHero() {
           >
             Monte sua chave.
           </p>
+
           <p className={styles.largeText} style={{ color: 'var(--ink-muted)' }}>
             Acompanhe cada partida.
           </p>
@@ -33,7 +35,13 @@ export default function LandingHero() {
           <InfoTag icon={Save} text='Salvo automaticamente' />
         </div>
       </div>
-      <div className={styles.right}></div>
+      <div className={styles.right}>
+        <MatchCard
+          teamA={{ name: 'Team Alpha', score: 3 }}
+          teamB={{ name: 'Team Beta', score: 1 }}
+          winner='teamA'
+        />
+      </div>
     </>
   );
 }
