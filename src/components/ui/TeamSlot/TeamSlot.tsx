@@ -4,7 +4,7 @@ import type { WinnerSlot } from '../../../types/bracket';
 
 interface TeamSlotProps {
   name: string;
-  score?: number;
+  score?: number | null;
   isWinner?: boolean;
   teamId: WinnerSlot;
   isEditable?: boolean;
@@ -38,6 +38,7 @@ export default function TeamSlot({
         <span className={clsx(styles.text, { [styles.winnerText]: isWinner })}>
           {name}
         </span>
+
         <span className={clsx(styles.text, { [styles.winnerText]: isWinner })}>
           {score}
         </span>

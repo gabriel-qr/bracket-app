@@ -1,19 +1,27 @@
-import type { WinnerSlot } from '../../../types/bracket';
+import type { Team, WinnerSlot } from '../../../types/bracket';
 import TeamSlot from '../TeamSlot/TeamSlot';
 import styles from './MatchCard.module.css';
 
 interface MatchCardProps {
-  teamA: { name: string; score?: number };
-  teamB: { name: string; score?: number };
-  winner?: WinnerSlot;
+  teamA: Team;
+  teamB: Team;
+  scoreA?: number | null;
+  scoreB?: number | null;
+  winner?: WinnerSlot | null;
 }
 
-export default function MatchCard({ teamA, teamB, winner }: MatchCardProps) {
+export default function MatchCard({
+  teamA,
+  teamB,
+  scoreA,
+  scoreB,
+  winner,
+}: MatchCardProps) {
   return (
     <div className={styles.container}>
       <TeamSlot
         name={teamA.name}
-        score={teamA?.score}
+        score={scoreA}
         isWinner={winner === 'teamA'}
         teamId='teamA'
       />
@@ -22,7 +30,7 @@ export default function MatchCard({ teamA, teamB, winner }: MatchCardProps) {
 
       <TeamSlot
         name={teamB.name}
-        score={teamB?.score}
+        score={scoreB}
         isWinner={winner === 'teamB'}
         teamId='teamB'
       />
