@@ -1,11 +1,14 @@
 import clsx from 'clsx';
 import styles from './TeamSlot.module.css';
+import type { WinnerSlot } from '../../../types/bracket';
 
 interface TeamSlotProps {
   name: string;
   score?: number;
   isWinner?: boolean;
-  teamId: 'teamA' | 'teamB';
+  teamId: WinnerSlot;
+  isEditable?: boolean;
+  onNameChange?: (name: string) => void;
 }
 
 export default function TeamSlot({
@@ -13,6 +16,8 @@ export default function TeamSlot({
   score,
   isWinner,
   teamId,
+  isEditable,
+  onNameChange,
 }: TeamSlotProps) {
   return (
     <div

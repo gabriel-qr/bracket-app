@@ -1,10 +1,11 @@
 import { Moon, SunDim, Trophy } from 'lucide-react';
 import styles from './Topbar.module.css';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
-import { useTheme } from '../../../hooks/useTheme';
+import { themeStore } from '../../../store/themeStore';
 
 export default function Topbar() {
-  const { theme, toggleTheme } = useTheme();
+  const theme = themeStore((state) => state.theme);
+  const toggleTheme = themeStore((state) => state.toggleTheme);
 
   return (
     <div className={styles.container}>

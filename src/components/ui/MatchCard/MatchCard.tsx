@@ -1,10 +1,11 @@
+import type { WinnerSlot } from '../../../types/bracket';
 import TeamSlot from '../TeamSlot/TeamSlot';
 import styles from './MatchCard.module.css';
 
 interface MatchCardProps {
   teamA: { name: string; score?: number };
   teamB: { name: string; score?: number };
-  winner?: 'teamA' | 'teamB';
+  winner?: WinnerSlot;
 }
 
 export default function MatchCard({ teamA, teamB, winner }: MatchCardProps) {
