@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  gap: var(--space-7);
+  align-items: stretch;
+  margin-right: var(--space-6);
+  position: relative;
+}
+
+@media (max-width: 1030px) {
+  .container {
+    margin: 0;
+    margin-top: var(--space-6);
+    width: 100%;
+    padding: 0 var(--space-4);
+  }
+}

@@ -1,0 +1,22 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.lineDefault {
+  stroke: var(--stroke-subtle);
+  stroke-width: 1.5px;
+  transition: stroke 0.3s ease;
+}
+
+.lineWinner {
+  stroke: var(--accent);
+  stroke-width: 2px;
+  transition:
+    stroke 0.3s ease,
+    stroke-width 0.3s ease;
+  z-index: 1000;
+}
