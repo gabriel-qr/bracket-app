@@ -96,7 +96,7 @@ export default function LandingHero() {
       </div>
 
       <div className={styles.right}>
-        <BracketPreview rounds={previewData} />
+        <BracketPreview rounds={previewData} champion='Team Zeta' />
       </div>
     </div>
   );

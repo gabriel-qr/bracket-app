@@ -10,15 +10,14 @@ export default function RoundCard({ matches }: RoundCardProps) {
   return (
     <div className={styles.container}>
       {matches.map((match) => (
-        <div key={match.id}>
-          <MatchCard
-            teamA={match.teamA}
-            teamB={match.teamB}
-            scoreA={match.scoreA ?? null}
-            scoreB={match.scoreB ?? null}
-            winner={match.winner}
-          />
-        </div>
+        <MatchCard
+          matchId={match.id}
+          teamA={match.teamA}
+          teamB={match.teamB}
+          scoreA={match.scoreA ?? null}
+          scoreB={match.scoreB ?? null}
+          winner={match.winner}
+        />
       ))}
     </div>
   );

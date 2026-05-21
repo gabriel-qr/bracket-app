@@ -1,8 +1,9 @@
 .container {
   display: flex;
-  gap: var(--space-4);
-  align-items: center;
+  gap: var(--space-7);
+  align-items: stretch;
   margin-right: var(--space-6);
+  position: relative;
 }
 
 @media (max-width: 1030px) {
