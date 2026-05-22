@@ -7,7 +7,7 @@
   font-weight: bold;
   height: 5.2rem;
   border-radius: var(--radius);
-  transition: 300ms ease;
+  transition: 500ms ease;
 }
 
 .ctaButton:hover {
