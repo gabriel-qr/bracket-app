@@ -1,10 +1,11 @@
 import { RefreshCcw, Save, Trophy } from 'lucide-react';
-import BracketPreview from '../../ui/BracketPreview/BracketPreview';
-import CTAButton from '../../ui/CTAButton/CTAButton';
-import InfoTag from '../../ui/InfoTag/InfoTag';
-import Topbar from '../../ui/Topbar/Topbar';
+
 import styles from './Landing.module.css';
-import { previewData } from '../../../utils/landingBracket';
+import { previewData } from '../../utils/landingBracket';
+import Topbar from '../../components/ui/Topbar/Topbar';
+import CTAButton from '../../components/ui/CTAButton/CTAButton';
+import InfoTag from '../../components/ui/InfoTag/InfoTag';
+import BracketPreview from '../../components/ui/BracketPreview/BracketPreview';
 
 export default function Landing() {
   return (
