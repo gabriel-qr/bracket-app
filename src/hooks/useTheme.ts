@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { themeStore } from '../store/themeStore';
+import { uiStore } from '../store/uiStore';
 
 export function useTheme() {
-  const theme = themeStore((state) => state.theme);
-  const toggleTheme = themeStore((state) => state.toggleTheme);
+  const theme = uiStore((state) => state.theme);
+  const toggleTheme = uiStore((state) => state.toggleTheme);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
