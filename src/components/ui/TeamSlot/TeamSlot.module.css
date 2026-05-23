@@ -1,5 +1,6 @@
 .container {
   width: 15rem;
+  min-height: var(--space-6);
   background-color: var(--surface-card);
   opacity: 0.7;
 }
@@ -16,7 +17,7 @@
 
 .text {
   font-size: var(--text-xs);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .winner {
