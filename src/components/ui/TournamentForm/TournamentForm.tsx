@@ -9,12 +9,15 @@ import { bracketStore } from '../../../store/bracketStore';
 import z from 'zod';
 import { Minus, Plus, X } from 'lucide-react';
 import clsx from 'clsx';
+import { useNavigate } from 'react-router';
 
 const QUICK_SELECT_OPTIONS = [4, 8, 16, 32];
 const MIN_TEAMS = 2;
 const MAX_TEAMS = 32;
 
 export default function TournamentForm() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState<TournamentFormData>({
     name: '',
     startDate: '',
@@ -68,6 +71,7 @@ export default function TournamentForm() {
     });
     generateBracket(result.data.teamCount);
     onClose();
+    navigate('/bracket');
   };
 
   return (
