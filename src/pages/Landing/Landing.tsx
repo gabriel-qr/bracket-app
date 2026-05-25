@@ -6,15 +6,26 @@ import Topbar from '../../components/ui/Topbar/Topbar';
 import CTAButton from '../../components/ui/CTAButton/CTAButton';
 import InfoTag from '../../components/ui/InfoTag/InfoTag';
 import BracketPreview from '../../components/ui/BracketPreview/BracketPreview';
+import clsx from 'clsx';
+import { bracketStore } from '../../store/bracketStore';
+import { useNavigate } from 'react-router';
+import { useEffect } from 'react';
 
 export default function Landing() {
+  const rounds = bracketStore((state) => state.rounds);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (rounds.length > 0) navigate('/bracket');
+  }, [rounds]);
+
   return (
-    <div>
+    <>
       <header className={styles.header}>
         <Topbar />
       </header>
 
-      <main className={styles.container}>
+      <main className={clsx(styles.container, styles.pageEnter)}>
         <div className={styles.left}>
           <h2 className={styles.subtitle}>
             Gerador de Chaveamento de Torneios
@@ -43,6 +54,6 @@ export default function Landing() {
           <BracketPreview rounds={previewData} champion='Team Alpha' />
         </div>
       </main>
-    </div>
+    </>
   );
 }

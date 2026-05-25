@@ -84,7 +84,13 @@ export default function TournamentForm() {
           </button>
         </div>
 
-        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+        <form
+          className={styles.form}
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+        >
           <div className={styles.inputContainer}>
             <label htmlFor='name'>Nome do torneio</label>
             <input
@@ -194,11 +200,11 @@ export default function TournamentForm() {
           <div className={styles.line}></div>
 
           <div className={styles.bottom}>
-            <button className={styles.cancel} onClick={onClose}>
+            <button className={styles.cancel} type='button' onClick={onClose}>
               Cancelar
             </button>
 
-            <button className={styles.confirm} onClick={handleSubmit}>
+            <button className={styles.confirm} type='submit'>
               Gerar Chaveamento
             </button>
           </div>

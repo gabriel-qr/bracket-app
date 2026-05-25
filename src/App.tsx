@@ -6,12 +6,21 @@ import { uiStore } from './store/uiStore';
 import { Route } from 'react-router';
 import { bracketStore } from './store/bracketStore';
 import BracketView from './pages/BracketView/BracketView';
+import { useEffect, useState } from 'react';
 
 export default function App() {
   useTheme();
 
   const isModalOpen = uiStore((state) => state.isModalOpen);
   const rounds = bracketStore((state) => state.rounds);
+
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  if (!hydrated) return null;
 
   return (
     <>

@@ -3,6 +3,7 @@ import styles from './Topbar.module.css';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import { uiStore } from '../../../store/uiStore';
 import { bracketStore } from '../../../store/bracketStore';
+import { useNavigate } from 'react-router';
 
 export default function Topbar() {
   const theme = uiStore((state) => state.theme);
@@ -11,24 +12,32 @@ export default function Topbar() {
   const tournament = bracketStore((state) => state.tournament);
   const resetBracket = bracketStore((state) => state.resetBracket);
 
+  const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
-      <a href='/' className={styles.left}>
+      <button
+        className={styles.left}
+        onClick={() => {
+          resetBracket();
+          navigate('/');
+        }}
+      >
         <Trophy className={styles.trophyIcon} size={22} />
         <h1 className={styles.title}>Brackify Arena</h1>
-      </a>
+      </button>
 
       <div className={styles.right}>
         {rounds.length > 0 && (
           <>
             <span className={styles.tournamentName}>{tournament.name}</span>
 
-            <button className={styles.button} onClick={resetBracket}>
+            <button className={styles.button} onClick={() => {}}>
               <Download className={styles.icon} size={14} />
               <span>Exportar</span>
             </button>
 
-            <button className={styles.button} onClick={() => {}}>
+            <button className={styles.button} onClick={resetBracket}>
               <RefreshCcw className={styles.icon} size={14} />
               <span>Reiniciar</span>
             </button>

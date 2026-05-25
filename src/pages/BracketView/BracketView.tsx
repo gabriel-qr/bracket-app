@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Topbar from '../../components/ui/Topbar/Topbar';
 import styles from './BracketView.module.css';
 
@@ -7,8 +8,12 @@ interface BracketViewProps {
 
 export default function BracketView({}: BracketViewProps) {
   return (
-    <div className={styles.container}>
-      <Topbar />
-    </div>
+    <>
+      <header className={styles.header}>
+        <Topbar />
+      </header>
+
+      <main className={clsx(styles.container, styles.pageEnter)}></main>
+    </>
   );
 }
