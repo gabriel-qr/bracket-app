@@ -9,12 +9,15 @@ import { bracketStore } from '../../../store/bracketStore';
 import z from 'zod';
 import { Minus, Plus, X } from 'lucide-react';
 import clsx from 'clsx';
+import { useNavigate } from 'react-router';
 
 const QUICK_SELECT_OPTIONS = [4, 8, 16, 32];
 const MIN_TEAMS = 2;
 const MAX_TEAMS = 32;
 
 export default function TournamentForm() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState<TournamentFormData>({
     name: '',
     startDate: '',
@@ -68,6 +71,7 @@ export default function TournamentForm() {
     });
     generateBracket(result.data.teamCount);
     onClose();
+    navigate('/bracket');
   };
 
   return (
@@ -80,7 +84,13 @@ export default function TournamentForm() {
           </button>
         </div>
 
-        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+        <form
+          className={styles.form}
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+        >
           <div className={styles.inputContainer}>
             <label htmlFor='name'>Nome do torneio</label>
             <input
@@ -190,11 +200,11 @@ export default function TournamentForm() {
           <div className={styles.line}></div>
 
           <div className={styles.bottom}>
-            <button className={styles.cancel} onClick={onClose}>
+            <button className={styles.cancel} type='button' onClick={onClose}>
               Cancelar
             </button>
 
-            <button className={styles.confirm} onClick={handleSubmit}>
+            <button className={styles.confirm} type='submit'>
               Gerar Chaveamento
             </button>
           </div>

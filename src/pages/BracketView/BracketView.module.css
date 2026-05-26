@@ -1,0 +1,29 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.container {
+  min-height: calc(100dvh - 5.2rem);
+  margin-top: 5.2rem;
+  width: 100%;
+  display: flex;
+  padding: var(--space-4) var(--space-6);
+}
+
+.pageEnter {
+  animation: fadeIn 300ms ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

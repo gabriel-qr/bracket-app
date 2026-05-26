@@ -7,8 +7,8 @@ interface TeamSlotProps {
   score?: number | null;
   isWinner?: boolean;
   teamId: WinnerSlot;
-  isEditable?: boolean;
-  onNameChange?: (name: string) => void;
+  isEditable: boolean;
+  onNameChange: (name: string) => void;
 }
 
 export default function TeamSlot({
@@ -33,12 +33,24 @@ export default function TeamSlot({
           { [styles.winner]: isWinner },
           { [styles.teamA]: teamId === 'teamA' },
           { [styles.teamB]: teamId === 'teamB' },
+          { [styles.innerEditable]: isEditable },
         )}
       >
-        <span className={clsx(styles.text, { [styles.winnerText]: isWinner })}>
-          {name}
-        </span>
-
+        {isEditable ? (
+          <input
+            type='text'
+            className={styles.input}
+            placeholder='Equipe ...'
+            value={name}
+            onChange={(e) => onNameChange(e.target.value)}
+          />
+        ) : (
+          <span
+            className={clsx(styles.text, { [styles.winnerText]: isWinner })}
+          >
+            {name}
+          </span>
+        )}
         <span className={clsx(styles.text, { [styles.winnerText]: isWinner })}>
           {score}
         </span>

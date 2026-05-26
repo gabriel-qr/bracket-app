@@ -1,3 +1,4 @@
+import { bracketStore } from '../../../store/bracketStore';
 import { connectionsStore } from '../../../store/connectionsStore';
 import type { Team, WinnerSlot } from '../../../types/bracket';
 import TeamSlot from '../TeamSlot/TeamSlot';
@@ -10,6 +11,8 @@ interface MatchCardProps {
   scoreA?: number | null;
   scoreB?: number | null;
   winner?: WinnerSlot | null;
+  roundIndex: number;
+  matchIndex: number;
 }
 
 export default function MatchCard({
@@ -19,8 +22,14 @@ export default function MatchCard({
   scoreA,
   scoreB,
   winner,
+  roundIndex,
+  matchIndex,
 }: MatchCardProps) {
   const registerNode = connectionsStore((state) => state.registerNode);
+  const status = bracketStore((state) => state.status);
+  const renameTeam = bracketStore((state) => state.renameTeam);
+
+  const isEditable = status === 'active' && roundIndex === 0;
 
   return (
     <div
@@ -35,6 +44,10 @@ export default function MatchCard({
         score={scoreA}
         isWinner={winner === 'teamA'}
         teamId='teamA'
+        isEditable={isEditable}
+        onNameChange={(name) =>
+          renameTeam(roundIndex, matchIndex, 'teamA', name)
+        }
       />
 
       <div className={styles.divider}></div>
@@ -44,6 +57,10 @@ export default function MatchCard({
         score={scoreB}
         isWinner={winner === 'teamB'}
         teamId='teamB'
+        isEditable={isEditable}
+        onNameChange={(name) =>
+          renameTeam(roundIndex, matchIndex, 'teamB', name)
+        }
       />
     </div>
   );
