@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import styles from './TeamSlot.module.css';
 import type { WinnerSlot } from '../../../types/bracket';
-import { bracketStore } from '../../../store/bracketStore';
 
 interface TeamSlotProps {
   name: string;
@@ -9,8 +8,7 @@ interface TeamSlotProps {
   isWinner?: boolean;
   teamId: WinnerSlot;
   isEditable: boolean;
-  roundIndex: number;
-  matchIndex: number;
+  onNameChange: (name: string) => void;
 }
 
 export default function TeamSlot({
@@ -19,10 +17,8 @@ export default function TeamSlot({
   isWinner,
   teamId,
   isEditable,
-  roundIndex,
-  matchIndex,
+  onNameChange,
 }: TeamSlotProps) {
-  const renameTeam = bracketStore((state) => state.renameTeam);
   return (
     <div
       className={clsx(
@@ -40,15 +36,13 @@ export default function TeamSlot({
           { [styles.innerEditable]: isEditable },
         )}
       >
-        {' '}
         {isEditable ? (
           <input
             type='text'
             className={styles.input}
             placeholder='Equipe ...'
-            onChange={(e) =>
-              renameTeam(roundIndex, matchIndex, teamId, e.target.value)
-            }
+            value={name}
+            onChange={(e) => onNameChange(e.target.value)}
           />
         ) : (
           <span

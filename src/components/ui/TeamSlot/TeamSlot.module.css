@@ -26,7 +26,7 @@
   background-color: transparent;
   border: none;
   border: 1px solid var(--stroke-subtle);
-  border-radius: var(radius);
+  border-radius: var(--radius-sm);
   outline: none;
   color: var(--ink-primary);
 }

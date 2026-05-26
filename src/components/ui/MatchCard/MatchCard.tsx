@@ -45,8 +45,9 @@ export default function MatchCard({
         isWinner={winner === 'teamA'}
         teamId='teamA'
         isEditable={isEditable}
-        roundIndex={roundIndex}
-        matchIndex={matchIndex}
+        onNameChange={(name) =>
+          renameTeam(roundIndex, matchIndex, 'teamA', name)
+        }
       />
 
       <div className={styles.divider}></div>
@@ -57,8 +58,9 @@ export default function MatchCard({
         isWinner={winner === 'teamB'}
         teamId='teamB'
         isEditable={isEditable}
-        roundIndex={roundIndex}
-        matchIndex={matchIndex}
+        onNameChange={(name) =>
+          renameTeam(roundIndex, matchIndex, 'teamB', name)
+        }
       />
     </div>
   );

@@ -21,3 +21,5 @@ export interface Tournament {
   startDate?: string;
   endDate?: string;
 }
+
+export type ExportFormat = 'jpeg' | 'png';
