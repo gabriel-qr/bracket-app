@@ -4,12 +4,13 @@ import styles from './RoundCard.module.css';
 
 interface RoundCardProps {
   matches: Match[];
+  roundIndex: number;
 }
 
-export default function RoundCard({ matches }: RoundCardProps) {
+export default function RoundCard({ matches, roundIndex }: RoundCardProps) {
   return (
     <div className={styles.container}>
-      {matches.map((match) => (
+      {matches.map((match, matchIndex) => (
         <MatchCard
           key={match.id}
           matchId={match.id}
@@ -18,6 +19,8 @@ export default function RoundCard({ matches }: RoundCardProps) {
           scoreA={match.scoreA ?? null}
           scoreB={match.scoreB ?? null}
           winner={match.winner}
+          roundIndex={roundIndex}
+          matchIndex={matchIndex}
         />
       ))}
     </div>

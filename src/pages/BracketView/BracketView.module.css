@@ -2,14 +2,15 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 999;
 }
 
 .container {
-  height: calc(100dvh - 5.2rem);
-  margin-top: 5.22rem;
+  min-height: calc(100dvh - 5.2rem);
+  margin-top: 5.2rem;
   width: 100%;
   display: flex;
-  align-items: center;
+  padding: var(--space-4) var(--space-6);
 }
 
 .pageEnter {

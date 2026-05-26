@@ -44,7 +44,7 @@ export default function BracketPreview({
       <BracketConnectors />
 
       {rounds.map((round, index) => (
-        <RoundCard matches={round} key={`r-${index}`} />
+        <RoundCard matches={round} key={`r-${index}`} roundIndex={index} />
       ))}
     </div>
   );

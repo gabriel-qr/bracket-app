@@ -39,7 +39,7 @@
 
 .tournamentName {
   color: var(--ink-secondary);
-  font-size: var(--text-sm);
+  font-size: var(--text-md);
   font-weight: 600;
   transition: 200ms ease;
 }
@@ -62,4 +62,9 @@
 
 .button:hover {
   background-color: var(--stroke-subtle);
+}
+
+.locked {
+  opacity: 0.4;
+  cursor: not-allowed;
 }

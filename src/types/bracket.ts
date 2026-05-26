@@ -14,7 +14,7 @@ export interface Match {
 }
 export type Round = Match[];
 
-export type Status = 'setup' | 'active';
+export type Status = 'setup' | 'active' | 'playing';
 
 export interface Tournament {
   name: string;

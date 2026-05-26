@@ -1,9 +1,19 @@
-import { Download, Moon, RefreshCcw, SunDim, Trophy } from 'lucide-react';
+import {
+  Download,
+  Lock,
+  Moon,
+  Play,
+  PlayCircle,
+  RefreshCcw,
+  SunDim,
+  Trophy,
+} from 'lucide-react';
 import styles from './Topbar.module.css';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import { uiStore } from '../../../store/uiStore';
 import { bracketStore } from '../../../store/bracketStore';
 import { useNavigate } from 'react-router';
+import clsx from 'clsx';
 
 export default function Topbar() {
   const theme = uiStore((state) => state.theme);
@@ -11,6 +21,8 @@ export default function Topbar() {
   const rounds = bracketStore((state) => state.rounds);
   const tournament = bracketStore((state) => state.tournament);
   const resetBracket = bracketStore((state) => state.resetBracket);
+  const status = bracketStore((state) => state.status);
+  const setStatus = bracketStore((state) => state.setStatus);
 
   const navigate = useNavigate();
 
@@ -32,13 +44,33 @@ export default function Topbar() {
           <>
             <span className={styles.tournamentName}>{tournament.name}</span>
 
+            <button
+              className={clsx(styles.button, {
+                [styles.locked]: status === 'playing',
+              })}
+              onClick={() => {
+                status === 'active'
+                  ? setStatus('playing')
+                  : setStatus('active');
+              }}
+            >
+              {status === 'active' ? (
+                <Play className={styles.icon} size={16} />
+              ) : (
+                <Lock className={styles.icon} size={16} />
+              )}
+              <span>
+                {status === 'active' ? 'Iniciar Torneio' : 'Torneio iniciado'}
+              </span>
+            </button>
+
             <button className={styles.button} onClick={() => {}}>
-              <Download className={styles.icon} size={14} />
+              <Download className={styles.icon} size={16} />
               <span>Exportar</span>
             </button>
 
             <button className={styles.button} onClick={resetBracket}>
-              <RefreshCcw className={styles.icon} size={14} />
+              <RefreshCcw className={styles.icon} size={16} />
               <span>Reiniciar</span>
             </button>
           </>
