@@ -2,7 +2,6 @@ import { RefreshCcw, Save, Trophy } from 'lucide-react';
 
 import styles from './Landing.module.css';
 import { previewData } from '../../utils/landingBracket';
-import Topbar from '../../components/ui/Topbar/Topbar';
 import CTAButton from '../../components/ui/CTAButton/CTAButton';
 import InfoTag from '../../components/ui/InfoTag/InfoTag';
 import BracketPreview from '../../components/ui/BracketPreview/BracketPreview';
@@ -21,10 +20,6 @@ export default function Landing() {
 
   return (
     <>
-      <header className={styles.header}>
-        <Topbar />
-      </header>
-
       <main className={clsx(styles.container, styles.pageEnter)}>
         <div className={styles.left}>
           <h2 className={styles.subtitle}>
