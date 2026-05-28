@@ -13,9 +13,12 @@ import { uiStore } from '../../../store/uiStore';
 import { bracketStore } from '../../../store/bracketStore';
 import { useNavigate } from 'react-router';
 import clsx from 'clsx';
-import { exportBracketStore } from '../../../store/exportBracketStore';
 
-export default function Topbar() {
+interface TopbarProps {
+  handleOpenExportModal: () => void;
+}
+
+export default function Topbar({ handleOpenExportModal }: TopbarProps) {
   const theme = uiStore((state) => state.theme);
   const toggleTheme = uiStore((state) => state.toggleTheme);
   const rounds = bracketStore((state) => state.rounds);
@@ -23,18 +26,8 @@ export default function Topbar() {
   const resetBracket = bracketStore((state) => state.resetBracket);
   const status = bracketStore((state) => state.status);
   const setStatus = bracketStore((state) => state.setStatus);
-  const exportBracket = exportBracketStore((state) => state.exportBracket);
-  const bracketRef = exportBracketStore((state) => state.bracketRef);
 
   const navigate = useNavigate();
-
-  const handleExport = async () => {
-    try {
-      await exportBracket('jpeg', bracketRef!, tournament.name);
-    } catch (err) {
-      alert('Não foi possível exportar a chave');
-    }
-  };
 
   return (
     <header className={styles.header}>
@@ -75,7 +68,7 @@ export default function Topbar() {
               </span>
             </button>
 
-            <button className={styles.button} onClick={handleExport}>
+            <button className={styles.button} onClick={handleOpenExportModal}>
               <Download className={styles.icon} size={16} />
               <span>Exportar</span>
             </button>
