@@ -13,8 +13,6 @@ export const generateBracket = (teamCount: number): Round[] => {
         id: `r${i}-m${j}`,
         teamA: { name: '' },
         teamB: { name: '' },
-        scoreA: null,
-        scoreB: null,
         winner: null,
       });
     }

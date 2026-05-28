@@ -7,6 +7,8 @@ import { Route } from 'react-router';
 import { bracketStore } from './store/bracketStore';
 import BracketView from './pages/BracketView/BracketView';
 import { useEffect, useState } from 'react';
+import Topbar from './components/ui/Topbar/Topbar';
+import './app.css';
 
 export default function App() {
   useTheme();
@@ -23,7 +25,9 @@ export default function App() {
   if (!hydrated) return null;
 
   return (
-    <>
+    <div className='container'>
+      <Topbar />
+
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route
@@ -33,6 +37,6 @@ export default function App() {
       </Routes>
 
       {isModalOpen && <TournamentForm />}
-    </>
+    </div>
   );
 }

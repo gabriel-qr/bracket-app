@@ -37,7 +37,7 @@ export default function Topbar() {
   };
 
   return (
-    <div className={styles.container}>
+    <header className={styles.header}>
       <button
         className={styles.left}
         onClick={() => {
@@ -92,6 +92,6 @@ export default function Topbar() {
           toggleTheme={toggleTheme}
         />
       </div>
-    </div>
+    </header>
   );
 }

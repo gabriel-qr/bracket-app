@@ -16,8 +16,6 @@ export default function RoundCard({ matches, roundIndex }: RoundCardProps) {
           matchId={match.id}
           teamA={match.teamA}
           teamB={match.teamB}
-          scoreA={match.scoreA ?? null}
-          scoreB={match.scoreB ?? null}
           winner={match.winner}
           roundIndex={roundIndex}
           matchIndex={matchIndex}

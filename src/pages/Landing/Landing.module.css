@@ -1,12 +1,5 @@
-.header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
 .container {
-  height: calc(100dvh - 5.2rem);
-  margin-top: 5.22rem;
+  flex: 1;
   width: 100%;
   display: flex;
   align-items: center;

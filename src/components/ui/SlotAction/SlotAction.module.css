@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  padding: 6px 0;
+  border-radius: var(--radius);
+  background-color: transparent;
+  border: none;
+  transition:
+    background-color 120ms,
+    border-color 120ms,
+    opacity 120ms;
+}
+
+.icon {
+  color: inherit;
+}
+
+.setWinner {
+  background-color: var(--accent-subtle);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  color: var(--accent);
+}
+
+.setWinner:hover {
+  background-color: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.undoWinner {
+  background-color: var(--danger-subtle);
+  border: 1px solid color-mix(in srgb, var(--danger) 30%, transparent);
+  color: var(--danger);
+}
+
+.undoWinner:hover {
+  background-color: color-mix(in srgb, var(--danger) 20%, transparent);
+}

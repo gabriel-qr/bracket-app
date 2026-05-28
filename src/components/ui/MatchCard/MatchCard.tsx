@@ -8,8 +8,6 @@ interface MatchCardProps {
   matchId: string;
   teamA: Team;
   teamB: Team;
-  scoreA?: number | null;
-  scoreB?: number | null;
   winner?: WinnerSlot | null;
   roundIndex: number;
   matchIndex: number;
@@ -19,8 +17,6 @@ export default function MatchCard({
   matchId,
   teamA,
   teamB,
-  scoreA,
-  scoreB,
   winner,
   roundIndex,
   matchIndex,
@@ -28,8 +24,13 @@ export default function MatchCard({
   const registerNode = connectionsStore((state) => state.registerNode);
   const status = bracketStore((state) => state.status);
   const renameTeam = bracketStore((state) => state.renameTeam);
+  const undoWinner = bracketStore((state) => state.undoWinner);
+  const setWinner = bracketStore((state) => state.setWinner);
 
   const isEditable = status === 'active' && roundIndex === 0;
+  const isPlaying = status === 'playing';
+  const hasWinner = winner !== null && winner !== undefined;
+  const canUndo = roundIndex > 0 && !hasWinner;
 
   return (
     <div
@@ -41,12 +42,19 @@ export default function MatchCard({
     >
       <TeamSlot
         name={teamA.name}
-        score={scoreA}
         isWinner={winner === 'teamA'}
         teamId='teamA'
         isEditable={isEditable}
         onNameChange={(name) =>
           renameTeam(roundIndex, matchIndex, 'teamA', name)
+        }
+        isPlaying={isPlaying}
+        hasWinner={hasWinner}
+        onSetWinner={() => setWinner(roundIndex, matchIndex, 'teamA')}
+        onUndoWinner={
+          canUndo && teamA.name.trim() !== ''
+            ? () => undoWinner(roundIndex, matchIndex, 'teamA')
+            : null
         }
       />
 
@@ -54,12 +62,19 @@ export default function MatchCard({
 
       <TeamSlot
         name={teamB.name}
-        score={scoreB}
         isWinner={winner === 'teamB'}
         teamId='teamB'
         isEditable={isEditable}
         onNameChange={(name) =>
           renameTeam(roundIndex, matchIndex, 'teamB', name)
+        }
+        isPlaying={isPlaying}
+        hasWinner={hasWinner}
+        onSetWinner={() => setWinner(roundIndex, matchIndex, 'teamB')}
+        onUndoWinner={
+          canUndo && teamB.name.trim() !== ''
+            ? () => undoWinner(roundIndex, matchIndex, 'teamB')
+            : null
         }
       />
     </div>

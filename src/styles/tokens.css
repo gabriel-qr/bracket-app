@@ -3,11 +3,11 @@
   /* Superfícies */
   --surface-base: #f0f4f8;
   --surface-card: #ffffff;
-  --surface-elevated: #e8edf3;
+  --surface-elevated: #dde4ed;
   --surface-overlay: #dde3eb;
 
   /* Bordas */
-  --stroke-subtle: #d5dce5;
+  --stroke-subtle: #c4cdd8;
   --stroke-default: #bec8d4;
   --stroke-strong: #9aaabb;
 
@@ -18,8 +18,8 @@
 
   /* Accent */
   --accent: #9c7d3a;
-  --accent-subtle: rgba(156, 125, 58, 0.1);
-  --accent-path: rgba(156, 125, 58, 0.07);
+  --accent-subtle: rgba(156, 125, 58, 0.2);
+  --accent-path: rgba(156, 125, 58, 0.5);
 
   /* Danger */
   --danger: #a93226;
@@ -72,8 +72,8 @@
   --ink-muted: #445566;
 
   --accent: #c4a35a;
-  --accent-subtle: rgba(196, 163, 90, 0.1);
-  --accent-path: rgba(196, 163, 90, 0.07);
+  --accent-subtle: rgba(196, 163, 90, 0.2);
+  --accent-path: rgba(196, 163, 90, 0.5);
 
   --danger: #a93226;
   --danger-subtle: rgba(169, 50, 38, 0.1);

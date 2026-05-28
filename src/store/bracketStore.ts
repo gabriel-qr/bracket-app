@@ -23,7 +23,11 @@ interface BracketStore {
     matchIndex: number,
     winner: WinnerSlot,
   ) => void;
-  undoWinner: (roundIndex: number, matchIndex: number) => void;
+  undoWinner: (
+    roundIndex: number,
+    matchIndex: number,
+    teamId: WinnerSlot,
+  ) => void;
 }
 
 export const bracketStore = create<BracketStore>()(
@@ -67,18 +71,21 @@ export const bracketStore = create<BracketStore>()(
         set({ rounds });
       },
 
-      undoWinner: (roundIndex, matchIndex) => {
+      undoWinner: (roundIndex, matchIndex, teamId) => {
         const rounds = structuredClone(get().rounds);
-        let currentMatchIndex = matchIndex;
-        rounds[roundIndex][currentMatchIndex].winner = null;
 
-        for (let i = roundIndex; i < rounds.length; i++) {
-          if (rounds[i + 1]) {
-            const slot = currentMatchIndex % 2 === 0 ? 'teamA' : 'teamB';
-            currentMatchIndex = Math.floor(currentMatchIndex / 2);
-            rounds[i + 1][currentMatchIndex][slot].name = '';
-          }
-        }
+        if (roundIndex === 0) return;
+
+        const previousRoundIndex = roundIndex - 1;
+
+        const previousMatchIndex =
+          teamId === 'teamA' ? matchIndex * 2 : matchIndex * 2 + 1;
+
+        rounds[previousRoundIndex][previousMatchIndex].winner = null;
+
+        rounds[roundIndex][matchIndex][teamId] = {
+          name: '',
+        };
 
         set({ rounds });
       },
