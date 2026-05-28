@@ -13,7 +13,6 @@ export default function BracketView() {
 
   useEffect(() => {
     setBracketRef(bracketRef);
-    console.log('setBracketRef called, bracketRef:', bracketRef.current);
   }, [setBracketRef]);
 
   const lastMatch = rounds[rounds.length - 1][0];

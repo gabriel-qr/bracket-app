@@ -28,8 +28,13 @@ export default function MatchCard({
   const registerNode = connectionsStore((state) => state.registerNode);
   const status = bracketStore((state) => state.status);
   const renameTeam = bracketStore((state) => state.renameTeam);
+  const undoWinner = bracketStore((state) => state.undoWinner);
+  const setWinner = bracketStore((state) => state.setWinner);
 
   const isEditable = status === 'active' && roundIndex === 0;
+  const isPlaying = status === 'playing';
+  const hasWinner = winner !== null && winner !== undefined;
+  const canUndo = roundIndex > 0 && !hasWinner;
 
   return (
     <div
@@ -48,6 +53,14 @@ export default function MatchCard({
         onNameChange={(name) =>
           renameTeam(roundIndex, matchIndex, 'teamA', name)
         }
+        isPlaying={isPlaying}
+        hasWinner={hasWinner}
+        onSetWinner={() => setWinner(roundIndex, matchIndex, 'teamA')}
+        onUndoWinner={
+          canUndo && teamA.name.trim() !== ''
+            ? () => undoWinner(roundIndex, matchIndex, 'teamA')
+            : null
+        }
       />
 
       <div className={styles.divider}></div>
@@ -60,6 +73,14 @@ export default function MatchCard({
         isEditable={isEditable}
         onNameChange={(name) =>
           renameTeam(roundIndex, matchIndex, 'teamB', name)
+        }
+        isPlaying={isPlaying}
+        hasWinner={hasWinner}
+        onSetWinner={() => setWinner(roundIndex, matchIndex, 'teamB')}
+        onUndoWinner={
+          canUndo && teamB.name.trim() !== ''
+            ? () => undoWinner(roundIndex, matchIndex, 'teamB')
+            : null
         }
       />
     </div>
