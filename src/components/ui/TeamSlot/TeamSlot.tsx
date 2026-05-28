@@ -6,7 +6,6 @@ import { ChevronRight, Undo2 } from 'lucide-react';
 
 interface TeamSlotProps {
   name: string;
-  score?: number | null;
   isWinner?: boolean;
   hasWinner: boolean;
   teamId: WinnerSlot;
@@ -19,7 +18,6 @@ interface TeamSlotProps {
 
 export default function TeamSlot({
   name,
-  score,
   isWinner,
   hasWinner,
   teamId,
@@ -40,6 +38,7 @@ export default function TeamSlot({
         styles.container,
         { [styles.teamA]: teamId === 'teamA' },
         { [styles.teamB]: teamId === 'teamB' },
+        { [styles.loser]: isLoser },
       )}
     >
       <div
@@ -66,9 +65,6 @@ export default function TeamSlot({
             {name}
           </span>
         )}
-        <span className={clsx(styles.text, { [styles.winnerText]: isWinner })}>
-          {score}
-        </span>
 
         <div className={styles.slotOverlay}>
           {(showConfirm || showUndo) && <div className={styles.gradient} />}

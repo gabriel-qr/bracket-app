@@ -8,8 +8,6 @@ export interface Match {
   id: string;
   teamA: Team;
   teamB: Team;
-  scoreA: number | null;
-  scoreB: number | null;
   winner: WinnerSlot | null;
 }
 export type Round = Match[];

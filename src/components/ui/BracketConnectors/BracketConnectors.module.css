@@ -13,7 +13,7 @@
 }
 
 .lineWinner {
-  stroke: var(--accent);
+  stroke: var(--accent-path);
   stroke-width: 2px;
   transition:
     stroke 0.3s ease,

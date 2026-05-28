@@ -8,8 +8,6 @@ interface MatchCardProps {
   matchId: string;
   teamA: Team;
   teamB: Team;
-  scoreA?: number | null;
-  scoreB?: number | null;
   winner?: WinnerSlot | null;
   roundIndex: number;
   matchIndex: number;
@@ -19,8 +17,6 @@ export default function MatchCard({
   matchId,
   teamA,
   teamB,
-  scoreA,
-  scoreB,
   winner,
   roundIndex,
   matchIndex,
@@ -46,7 +42,6 @@ export default function MatchCard({
     >
       <TeamSlot
         name={teamA.name}
-        score={scoreA}
         isWinner={winner === 'teamA'}
         teamId='teamA'
         isEditable={isEditable}
@@ -67,7 +62,6 @@ export default function MatchCard({
 
       <TeamSlot
         name={teamB.name}
-        score={scoreB}
         isWinner={winner === 'teamB'}
         teamId='teamB'
         isEditable={isEditable}
