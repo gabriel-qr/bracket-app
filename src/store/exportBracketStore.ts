@@ -14,7 +14,7 @@ interface ExportBracketStore {
   ) => Promise<void>;
 }
 
-export const exportBracketStore = create<ExportBracketStore>()((set, get) => ({
+export const exportBracketStore = create<ExportBracketStore>()((set) => ({
   bracketRef: null,
 
   setBracketRef: (ref) => set({ bracketRef: ref }),

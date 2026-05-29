@@ -9,9 +9,11 @@ import clsx from 'clsx';
 import { bracketStore } from '../../store/bracketStore';
 import { useNavigate } from 'react-router';
 import { useEffect } from 'react';
+import { uiStore } from '../../store/uiStore';
 
 export default function Landing() {
   const rounds = bracketStore((state) => state.rounds);
+  const setIsModalOpen = uiStore((state) => state.setIsModalOpen);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,7 +38,11 @@ export default function Landing() {
             Crie, compartilhe e acompanhe qualquer torneio — qualquer esporte.
           </p>
 
-          <CTAButton />
+          <CTAButton
+            onClick={() => setIsModalOpen(true)}
+            text='Crie seu chaveamento'
+            maxWidth={'40rem'}
+          />
 
           <div className={styles.tagContainer}>
             <InfoTag icon={Trophy} text='Qualquer esporte' />

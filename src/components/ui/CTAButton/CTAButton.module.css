@@ -1,10 +1,11 @@
 .ctaButton {
   width: 100%;
-  max-width: 380px;
-  text-transform: uppercase;
-  background-color: var(--accent);
-  color: #fff;
+  max-width: var(--cta-button-max-width, 100%);
+  text-transform: var(--cta-button-text-transform, uppercase);
+  background-color: var(--cta-button-background, var(--accent));
+  color: var(--ink-primary);
   font-weight: bold;
+  font-size: var(--cta-button-font-size, var(--text-md));
   height: 5.2rem;
   border-radius: var(--radius);
   transition: 500ms ease;

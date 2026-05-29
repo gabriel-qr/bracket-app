@@ -13,40 +13,36 @@ import { uiStore } from '../../../store/uiStore';
 import { bracketStore } from '../../../store/bracketStore';
 import { useNavigate } from 'react-router';
 import clsx from 'clsx';
-import { exportBracketStore } from '../../../store/exportBracketStore';
 
-export default function Topbar() {
+interface TopbarProps {
+  handleOpenExportModal: () => void;
+  handleOpenResetModal: () => void;
+}
+
+export default function Topbar({
+  handleOpenExportModal,
+  handleOpenResetModal,
+}: TopbarProps) {
   const theme = uiStore((state) => state.theme);
   const toggleTheme = uiStore((state) => state.toggleTheme);
   const rounds = bracketStore((state) => state.rounds);
   const tournament = bracketStore((state) => state.tournament);
-  const resetBracket = bracketStore((state) => state.resetBracket);
   const status = bracketStore((state) => state.status);
   const setStatus = bracketStore((state) => state.setStatus);
-  const exportBracket = exportBracketStore((state) => state.exportBracket);
-  const bracketRef = exportBracketStore((state) => state.bracketRef);
 
   const navigate = useNavigate();
-
-  const handleExport = async () => {
-    try {
-      await exportBracket('jpeg', bracketRef!, tournament.name);
-    } catch (err) {
-      alert('Não foi possível exportar a chave');
-    }
-  };
 
   return (
     <header className={styles.header}>
       <button
         className={styles.left}
         onClick={() => {
-          resetBracket();
+          handleOpenResetModal();
           navigate('/');
         }}
       >
         <Trophy className={styles.trophyIcon} size={22} />
-        <h1 className={styles.title}>Brackify Arena</h1>
+        <h1 className={styles.title}>Torneio.app</h1>
       </button>
 
       <div className={styles.right}>
@@ -75,12 +71,12 @@ export default function Topbar() {
               </span>
             </button>
 
-            <button className={styles.button} onClick={handleExport}>
+            <button className={styles.button} onClick={handleOpenExportModal}>
               <Download className={styles.icon} size={16} />
               <span>Exportar</span>
             </button>
 
-            <button className={styles.button} onClick={resetBracket}>
+            <button className={styles.button} onClick={handleOpenResetModal}>
               <RefreshCcw className={styles.icon} size={16} />
               <span>Reiniciar</span>
             </button>

@@ -21,7 +21,7 @@ interface ConnectionsStoreState {
   ) => void;
 }
 
-export const connectionsStore = create<ConnectionsStoreState>((set, get) => ({
+export const connectionsStore = create<ConnectionsStoreState>((set) => ({
   lines: [],
 
   registerNode: (nodeId, element) => {

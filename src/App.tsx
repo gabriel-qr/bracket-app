@@ -9,6 +9,8 @@ import BracketView from './pages/BracketView/BracketView';
 import { useEffect, useState } from 'react';
 import Topbar from './components/ui/Topbar/Topbar';
 import './app.css';
+import ExportModal from './components/modals/ExportModal/ExportModal';
+import ResetModal from './components/modals/ResetModal/ResetModal';
 
 export default function App() {
   useTheme();
@@ -16,7 +18,15 @@ export default function App() {
   const isModalOpen = uiStore((state) => state.isModalOpen);
   const rounds = bracketStore((state) => state.rounds);
 
-  const [hydrated, setHydrated] = useState(false);
+  const [hydrated, setHydrated] = useState<boolean>(false);
+  const [isExportModalOpen, setIsExportModalOpen] = useState<boolean>(false);
+  const [isResetModalOpen, setIsResetModalOpen] = useState<boolean>(false);
+
+  const handleOpenExportModal = () => setIsExportModalOpen(true);
+  const handleCloseExportModal = () => setIsExportModalOpen(false);
+
+  const handleOpenResetModal = () => setIsResetModalOpen(true);
+  const handleCloseResetModal = () => setIsResetModalOpen(false);
 
   useEffect(() => {
     setHydrated(true);
@@ -26,7 +36,10 @@ export default function App() {
 
   return (
     <div className='container'>
-      <Topbar />
+      <Topbar
+        handleOpenExportModal={handleOpenExportModal}
+        handleOpenResetModal={handleOpenResetModal}
+      />
 
       <Routes>
         <Route path='/' element={<Landing />} />
@@ -37,6 +50,8 @@ export default function App() {
       </Routes>
 
       {isModalOpen && <TournamentForm />}
+      {isExportModalOpen && <ExportModal onClose={handleCloseExportModal} />}
+      {isResetModalOpen && <ResetModal onClose={handleCloseResetModal} />}
     </div>
   );
 }
