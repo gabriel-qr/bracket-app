@@ -1,14 +1,31 @@
-import clsx from 'clsx';
 import { bracketStore } from '../../../store/bracketStore';
 import { exportBracketStore } from '../../../store/exportBracketStore';
 import type { ExportFormat } from '../../../types/bracket';
 import styles from './ExportModal.module.css';
 import { useState } from 'react';
+import CTAButton from '../CTAButton/CTAButton';
+import { FileImage, Image } from 'lucide-react';
+import FormatCard from '../FormatCard/FormatCard';
 
 interface ExportModalProps {
   onClose?: () => void;
 }
 type SelectedButton = 'jpeg' | 'png';
+
+const formatOptions = [
+  {
+    description: 'Maior qualidade',
+    format: 'png',
+    icon: FileImage,
+    title: 'PNG',
+  },
+  {
+    description: 'Menor tamanho',
+    format: 'jpeg',
+    icon: Image,
+    title: 'JPEG',
+  },
+] as const;
 
 export default function ExportModal({ onClose }: ExportModalProps) {
   const exportBracket = exportBracketStore((state) => state.exportBracket);
@@ -18,9 +35,14 @@ export default function ExportModal({ onClose }: ExportModalProps) {
   const [selected, setSelected] = useState<SelectedButton>('png');
 
   const handleExport = async (format: ExportFormat) => {
+    if (!bracketRef) {
+      alert('Não foi possível encontrar a chave para exportar');
+      return;
+    }
+
     try {
-      await exportBracket(format, bracketRef!, tournament.name);
-    } catch (err) {
+      await exportBracket(format, bracketRef, tournament.name);
+    } catch {
       alert('Não foi possível exportar a chave');
     }
   };
@@ -28,36 +50,31 @@ export default function ExportModal({ onClose }: ExportModalProps) {
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.container} onClick={(e) => e.stopPropagation()}>
         <h3 className={styles.header}>Exportar Chave</h3>
-        <div className={styles.formatsContainer}>
-          <button
-            onClick={() => setSelected('png')}
-            className={clsx(styles.formatCard, {
-              [styles.isSelected]: selected === 'png',
-            })}
-          >
-            PNG
-          </button>
 
-          <button
-            onClick={() => setSelected('jpeg')}
-            className={clsx(styles.formatCard, {
-              [styles.isSelected]: selected === 'jpeg',
-            })}
-          >
-            JPEG
-          </button>
+        <div className={styles.formatsContainer}>
+          {formatOptions.map((option) => (
+            <FormatCard
+              key={option.format}
+              onClick={() => setSelected(option.format)}
+              icon={option.icon}
+              isSelected={selected === option.format}
+              title={option.title}
+              description={option.description}
+            />
+          ))}
         </div>
 
-        <button
-          className={styles.exportButton}
-          onClick={() => handleExport(selected)}
-        >
-          Exportar como <span className={styles.formatText}>{selected}</span>
-        </button>
+        <div className={styles.buttonContainer}>
+          <CTAButton
+            text={`Exportar como ${selected.toUpperCase()}`}
+            onClick={() => handleExport(selected)}
+            textTransform='none'
+          />
 
-        <button className={styles.cancel} type='button' onClick={onClose}>
-          Cancelar
-        </button>
+          <button className={styles.cancel} type='button' onClick={onClose}>
+            Cancelar
+          </button>
+        </div>
       </div>
     </div>
   );

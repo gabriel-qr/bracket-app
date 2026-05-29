@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import type { Round } from '../../../types/bracket';
 import RoundCard from '../RoundCard/RoundCard';
 import styles from './BracketPreview.module.css';
@@ -15,6 +15,7 @@ export default function BracketPreview({
   champion,
 }: BracketPreviewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [connectorSize, setConnectorSize] = useState({ height: 0, width: 0 });
   const calculateConnections = connectionsStore(
     (state) => state.calculateConnections,
   );
@@ -22,11 +23,14 @@ export default function BracketPreview({
   useLayoutEffect(() => {
     const handleCalculate = () => {
       if (containerRef.current) {
-        calculateConnections(
-          containerRef.current.getBoundingClientRect(),
-          rounds,
-          champion,
-        );
+        const containerRect = containerRef.current.getBoundingClientRect();
+
+        setConnectorSize({
+          height: Math.ceil(containerRect.height),
+          width: Math.ceil(containerRect.width),
+        });
+
+        calculateConnections(containerRect, rounds, champion);
       }
     };
 
@@ -41,7 +45,10 @@ export default function BracketPreview({
 
   return (
     <div className={styles.container} ref={containerRef}>
-      <BracketConnectors />
+      <BracketConnectors
+        height={connectorSize.height}
+        width={connectorSize.width}
+      />
 
       {rounds.map((round, index) => (
         <RoundCard matches={round} key={`r-${index}`} roundIndex={index} />
