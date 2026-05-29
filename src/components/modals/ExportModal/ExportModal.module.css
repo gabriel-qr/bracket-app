@@ -1,7 +1,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: color-mix(in srgb, var(--surface-overlay) 70%, transparent);
   z-index: 200;
   display: flex;
   align-items: center;
@@ -15,8 +15,9 @@
   gap: var(--space-5);
   padding: var(--space-5) var(--space-6);
   justify-content: center;
-  background-color: var(--surface-card);
+  background-color: var(--surface-elevated);
   border-radius: var(--radius-lg);
+  border: solid 1.5px var(--stroke-default);
   box-sizing: border-box;
   width: min(calc(100% - var(--space-4) * 2), 36rem);
   animation: slideUp 0.35s ease;
@@ -42,7 +43,7 @@
 .cancel {
   color: var(--ink-secondary);
   font-size: var(--text-md);
-  border: solid 0.5px var(--stroke-subtle);
+  border: solid 0.5px var(--stroke-default);
   padding: var(--space-2);
   border-radius: var(--radius);
   transition: 300ms ease;

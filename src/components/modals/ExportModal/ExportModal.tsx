@@ -3,9 +3,9 @@ import { exportBracketStore } from '../../../store/exportBracketStore';
 import type { ExportFormat } from '../../../types/bracket';
 import styles from './ExportModal.module.css';
 import { useState } from 'react';
-import CTAButton from '../CTAButton/CTAButton';
+import CTAButton from '../../ui/CTAButton/CTAButton';
 import { FileImage, Image } from 'lucide-react';
-import FormatCard from '../FormatCard/FormatCard';
+import FormatCard from '../../ui/FormatCard/FormatCard';
 
 interface ExportModalProps {
   onClose?: () => void;

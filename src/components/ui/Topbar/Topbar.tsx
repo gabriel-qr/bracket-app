@@ -16,14 +16,17 @@ import clsx from 'clsx';
 
 interface TopbarProps {
   handleOpenExportModal: () => void;
+  handleOpenResetModal: () => void;
 }
 
-export default function Topbar({ handleOpenExportModal }: TopbarProps) {
+export default function Topbar({
+  handleOpenExportModal,
+  handleOpenResetModal,
+}: TopbarProps) {
   const theme = uiStore((state) => state.theme);
   const toggleTheme = uiStore((state) => state.toggleTheme);
   const rounds = bracketStore((state) => state.rounds);
   const tournament = bracketStore((state) => state.tournament);
-  const resetBracket = bracketStore((state) => state.resetBracket);
   const status = bracketStore((state) => state.status);
   const setStatus = bracketStore((state) => state.setStatus);
 
@@ -34,12 +37,12 @@ export default function Topbar({ handleOpenExportModal }: TopbarProps) {
       <button
         className={styles.left}
         onClick={() => {
-          resetBracket();
+          handleOpenResetModal();
           navigate('/');
         }}
       >
         <Trophy className={styles.trophyIcon} size={22} />
-        <h1 className={styles.title}>Brackify Arena</h1>
+        <h1 className={styles.title}>Torneio.app</h1>
       </button>
 
       <div className={styles.right}>
@@ -73,7 +76,7 @@ export default function Topbar({ handleOpenExportModal }: TopbarProps) {
               <span>Exportar</span>
             </button>
 
-            <button className={styles.button} onClick={resetBracket}>
+            <button className={styles.button} onClick={handleOpenResetModal}>
               <RefreshCcw className={styles.icon} size={16} />
               <span>Reiniciar</span>
             </button>
