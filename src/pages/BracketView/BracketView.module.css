@@ -13,13 +13,13 @@
 }
 
 .pageEnter {
-  animation: fadeIn 300ms ease;
+  animation: fadeIn 800ms ease;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;

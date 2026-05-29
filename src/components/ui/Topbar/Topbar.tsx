@@ -11,7 +11,6 @@ import styles from './Topbar.module.css';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import { uiStore } from '../../../store/uiStore';
 import { bracketStore } from '../../../store/bracketStore';
-import { useNavigate } from 'react-router';
 import clsx from 'clsx';
 
 interface TopbarProps {
@@ -30,17 +29,9 @@ export default function Topbar({
   const status = bracketStore((state) => state.status);
   const setStatus = bracketStore((state) => state.setStatus);
 
-  const navigate = useNavigate();
-
   return (
     <header className={styles.header}>
-      <button
-        className={styles.left}
-        onClick={() => {
-          handleOpenResetModal();
-          navigate('/');
-        }}
-      >
+      <button className={styles.left} onClick={handleOpenResetModal}>
         <Trophy className={styles.trophyIcon} size={22} />
         <h1 className={styles.title}>Torneio.app</h1>
       </button>
