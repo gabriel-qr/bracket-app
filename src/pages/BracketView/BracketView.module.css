@@ -2,17 +2,24 @@
   flex: 1;
   width: 100%;
   display: flex;
-  padding: var(--space-4) var(--space-6);
+  padding: calc(5.2rem + var(--space-4)) 0 var(--space-4);
+}
+
+.scrollContent {
+  flex: 1;
+  display: flex;
+  min-width: max-content;
+  padding: 0 var(--space-6);
 }
 
 .pageEnter {
-  animation: fadeIn 300ms ease;
+  animation: fadeIn 800ms ease;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;

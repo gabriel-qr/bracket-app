@@ -22,11 +22,10 @@ export default function BracketView() {
 
   return (
     <>
-      <main
-        className={clsx(styles.container, styles.pageEnter)}
-        ref={bracketRef}
-      >
-        <BracketPreview rounds={rounds} champion={champion} />
+      <main className={clsx(styles.container, styles.pageEnter)}>
+        <div className={styles.scrollContent} ref={bracketRef}>
+          <BracketPreview rounds={rounds} champion={champion} />
+        </div>
       </main>
     </>
   );

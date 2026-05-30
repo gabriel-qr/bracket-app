@@ -56,7 +56,7 @@ export default function TeamSlot({
             className={styles.input}
             placeholder='Equipe ...'
             value={name}
-            onChange={(e) => onNameChange(e.target.value)}
+            onChange={(e) => onNameChange(e.target.value.trim())}
           />
         ) : (
           <span
