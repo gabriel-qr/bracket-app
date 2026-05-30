@@ -4,6 +4,7 @@ import RoundCard from '../RoundCard/RoundCard';
 import styles from './BracketPreview.module.css';
 import { connectionsStore } from '../../../store/connectionsStore';
 import BracketConnectors from '../BracketConnectors/BracketConnectors';
+import ChampionCard from '../ChampionCard/ChampionCard';
 
 interface BracketPreviewProps {
   rounds: Round[];
@@ -84,6 +85,8 @@ export default function BracketPreview({
           roundIndex={index}
         />
       ))}
+
+      {champion && <ChampionCard championName={champion} />}
     </div>
   );
 }

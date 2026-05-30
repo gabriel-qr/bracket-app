@@ -1,7 +1,7 @@
 .container {
   display: flex;
   gap: 8rem;
-  align-items: flex-start;
+  align-items: center;
   position: relative;
   max-width: max-content;
   padding-right: var(--space-6);

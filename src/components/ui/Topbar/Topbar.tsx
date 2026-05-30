@@ -31,10 +31,10 @@ export default function Topbar({
 
   return (
     <header className={styles.header}>
-      <button className={styles.left} onClick={handleOpenResetModal}>
+      <div className={styles.left}>
         <Trophy className={styles.trophyIcon} size={22} />
         <h1 className={styles.title}>Torneio.app</h1>
-      </button>
+      </div>
 
       <div className={styles.right}>
         {rounds.length > 0 && (
