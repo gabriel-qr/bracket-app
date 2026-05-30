@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://torneio-appp.vercel.app/sitemap.xml
