@@ -1,74 +1,64 @@
-# React + TypeScript + Vite
+# Torneio.app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Torneio.app is a web app for creating, editing, tracking, and exporting tournament brackets. It is designed for any sport or competition format that can be represented as a single-elimination bracket.
 
-Currently, two official plugins are available:
+The app lets users create a tournament, choose the number of teams, fill in team names, advance winners through each round, and export the final bracket as an image.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Create single-elimination tournament brackets
+- Supports 2 to 32 teams
+- Quick team-count presets for 4, 8, 16, and 32 teams
+- Rename teams directly in the bracket
+- Select and undo match winners
+- Persist bracket state locally with browser storage
+- Export brackets as PNG or JPEG
+- Dark and light theme support
+- Static SEO files, including Open Graph image, sitemap, robots.txt, and favicon
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- React
+- TypeScript
+- Vite
+- React Router
+- Zustand
+- Zod
+- CSS Modules
+- html-to-image
+- Lucide React
+- pnpm
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Install dependencies:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Start the development server:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm dev
 ```
-# bracket-app
+
+## Project Structure
+
+```text
+
+src/
+  components/
+    modals/
+    ui/
+  hooks/
+  pages/
+  store/
+  styles/
+  types/
+  utils/
+```
+
+## License
+
+This project is currently private and does not declare a public license.
