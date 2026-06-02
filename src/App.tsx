@@ -11,6 +11,7 @@ import Topbar from './components/ui/Topbar/Topbar';
 import './app.css';
 import ExportModal from './components/modals/ExportModal/ExportModal';
 import ResetModal from './components/modals/ResetModal/ResetModal';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App() {
   useTheme();
@@ -52,6 +53,7 @@ export default function App() {
       {isModalOpen && <TournamentForm />}
       {isExportModalOpen && <ExportModal onClose={handleCloseExportModal} />}
       {isResetModalOpen && <ResetModal onClose={handleCloseResetModal} />}
+      <Analytics />
     </div>
   );
 }
