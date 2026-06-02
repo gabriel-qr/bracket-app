@@ -1,6 +1,6 @@
 # Torneio.app
 
-🔗 [torneio-app.vercel.app](https://torneio-app.vercel.app)
+🔗 [torneio-appp.vercel.app](https://torneio-appp.vercel.app)
 
 Torneio.app is a web app for creating, editing, tracking, and exporting tournament brackets. It is designed for any sport or competition format that can be represented as a single-elimination bracket.
 
